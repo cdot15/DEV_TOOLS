@@ -20,24 +20,23 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y python3-pip
 
 # NEOVIM DEP
-RUN apt-get update
-RUN apt-get install -y curl \
+RUN apt-get update \
+    && apt-get install -y curl \
     && apt-get install -y zip \
     && apt-get install -y python3-venv \
     && apt-get install -y ripgrep \
     && apt-get install -y wget    
-RUN wget https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64.tar.gz
-
-RUN tar xzvf nvim-linux64.tar.gz -C /opt
-RUN rm nvim-linux64.tar.gz
-RUN ln -s /opt/nvim-linux64/bin/nvim /usr/bin/nvim
+RUN wget --progress=dot:giga https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64.tar.gz \
+    && tar xzvf nvim-linux64.tar.gz -C /opt \
+    && rm nvim-linux64.tar.gz \
+    && ln -s /opt/nvim-linux64/bin/nvim /usr/bin/nvim \
 
 WORKDIR /home/${USERNAME}
-RUN wget  https://github.com/cdot15/DEV_TOOLS/raw/refs/heads/ROS_NEOVIM_CONTAINER/nvim.tar.gz
-RUN mkdir .config
-RUN tar xzvf nvim.tar.gz -C /home/${USERNAME}/.config
-RUN rm nvim.tar.gz
-RUN apt-get install -y tmux
+RUN wget --progress=dot:giga https://github.com/cdot15/DEV_TOOLS/raw/refs/heads/ROS_NEOVIM_CONTAINER/nvim.tar.gz \
+    && mkdir .config \
+    && tar xzvf nvim.tar.gz -C /home/${USERNAME}/.config \
+    && rm nvim.tar.gz \
+    && apt-get install -y tmux \
 
 RUN echo 'alias tmux="TERM=screen-256color-bce tmux"' >> .bashrc
 

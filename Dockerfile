@@ -44,7 +44,7 @@ RUN wget --progress=dot:giga https://github.com/neovim/neovim/releases/download/
     && ln -s /opt/nvim-linux64/bin/nvim /usr/bin/nvim 
 
 WORKDIR /home/${USERNAME}
-RUN wget --progress=dot:giga https://github.com/cdot15/DEV_TOOLS/raw/refs/heads/ROS_NEOVIM_CONTAINER/nvim.tar.gz \
+RUN wget --progress=dot:giga https://github.com/cdot15/DEV_TOOLS/raw/refs/heads/ubuntu20/nvim.tar.gz \
     && mkdir .config \
     && tar xzvf nvim.tar.gz -C /home/${USERNAME}/.config \
     && rm nvim.tar.gz \

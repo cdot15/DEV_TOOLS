@@ -1,6 +1,6 @@
 
 FROM amd64/ros:jazzy
-ARG USERNAME=USERNAME
+ARG USERNAME=ubuntu
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
@@ -25,7 +25,8 @@ RUN apt-get update \
     && apt-get install -y zip \
     && apt-get install -y python3-venv \
     && apt-get install -y ripgrep \
-    && apt-get install -y wget    
+    && apt-get install -y wget \     
+    && apt-get install -y npm
 RUN wget --progress=dot:giga https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64.tar.gz \
     && tar xzvf nvim-linux64.tar.gz -C /opt \
     && rm nvim-linux64.tar.gz \

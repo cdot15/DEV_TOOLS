@@ -19,6 +19,7 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import/override with your plugins
+    { import = "lazyvim.plugins.extras.dap.core" },
     { import = "plugins" },
   },
   defaults = {
@@ -32,7 +33,7 @@ require("lazy").setup({
   },
   install = { colorscheme = { "tokyonight", "habamax" } },
   checker = {
-    enabled = true, -- check for plugin updates periodically
+    enabled = false, -- check for plugin updates periodically
     notify = false, -- notify on update
   }, -- automatically check for plugin updates
   performance = {
